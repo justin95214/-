@@ -29,6 +29,7 @@ int Pop(IntStack *s, int *x) {
 		//스택개수가 0개이면 return -1
 		return -1;
 	}
+	*x = s->stk[s->ptr - 1];
 }
 
 int Peek(const IntStack *s, int *x) {
