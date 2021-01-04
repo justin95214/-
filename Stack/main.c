@@ -16,7 +16,7 @@ int main(){
 	while (1)
 	{
 		int menu, x;
-		printf("현재 데이터두 : %d / %d\n", Size(&s), Capcity(&s));
+		printf("현재 데이터 : %d / %d\n", Size(&s), Capcity(&s));
 		printf("(1)push (2)pop (3)peek (4)print (5)exit\n");
 		scanf("%d", &menu);
 
@@ -31,7 +31,7 @@ int main(){
 			break;
 
 		case 2:
-			if (Pop(&s, x) == -1)
+			if (Pop(&s, &x) == -1)
 				puts("pop failed!!");
 			else
 				printf("pop data = %d \n", x);
@@ -39,7 +39,7 @@ int main(){
 
 		case 3:
 
-			if (Peek(&s, x) == -1)
+			if (Peek(&s, &x) == -1)
 				puts("peek failed!!");
 			else
 				printf("peek data = %d \n", x);
