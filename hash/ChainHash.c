@@ -40,15 +40,15 @@ int Initialize(ChainHash * h, int size)
 
 /*--- 검색 ---*/
 Node * Search(const ChainHash * h, const Member * x)
-{
-	int key = hash(x->name, h->size);	/* 검색하는 데이터의 해시 값 */
-	Node *p = h->table[key];			/* 주목 노드 */
-
-	while (p != NULL) {
-		if (!strcmp(p->data.name, x->name))		/* 검색 성공 */
-			return p;
-		p = p->next;							/* 다음 노드에 주목 */
-	}
+{							/* 찾으려는 Member struct 데이터 입력 */
+	int key = hash(x->name, h->size);	/* 검색하는 Member struct 데이터를 통해 해시 값 구함 */
+	Node *p = h->table[key];			/* 주목 노드을 통해 구한 해시 값의 table로 가리킴 */
+							/* table를 가리켜야하기때문에, 포인터 형식 */
+	while (p != NULL) {				/* 주목 노드가 아무것도 가리키지않는다면 */
+		if (!strcmp(p->data.name, x->name))		/* while문을 통해 주목노드가 가리키는 data의 name값과 찾으려는 x의 name값비교 */
+			return p;					/* strcmp의 함수 결과 값이 true >> 0 : flase >> 1 이므로 정반대 상황인 !  */
+		p = p->next;							/*if문에 해당하지않는다면 다음 노드를 가리킴 */
+	}							/* 다음 노드에 주목 */
 	return NULL; /* 검색 실패 */
 }
 
